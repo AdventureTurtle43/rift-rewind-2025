@@ -1,0 +1,83 @@
+:root {
+    --text: #031d1f;
+    --background: #f9feff;
+    --primary: #1fe4f7;
+    --secondary: #f586a6;
+    --accent: #f1a239;
+}
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    color: var(--text);
+    font-family: "Lexend", sans-serif;
+}
+input, button {
+    font-family: "Lexend", sans-serif;
+}
+
+button {
+    background-color: var(--accent);
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+}
+button:hover{
+    background-color: #e6952a;
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+.summoner-input {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.summoner-input input {
+    height: 20px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--primary);
+}
+.header-icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 1rem;
+    border-radius: 50%;
+}
+.champion-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  align-items: center;  
+}
+.main-role {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+.suggestion-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+.suggestion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}

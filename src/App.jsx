@@ -4,6 +4,8 @@ import ChampionPool from './ChampionPool'
 import MatchupWeaknesses from './MatchupWeaknesses'
 import Suggestions from './Suggestions'
 import BlindPick from './BlindPick'
+import "./css/App.css"
+import Header from './Header'
 
 
 function App() {
@@ -47,19 +49,15 @@ function App() {
 
   return (
     <>
-      <div style = {{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "2rem",
-        padding: "2rem"
-      }}> 
-
-        <div>
-          <h1>Name: {name}</h1>
-          <input type='text' placeholder='Name' onChange={(e) => setName(e.target.value)}/>
-          <input type='text' placeholder='#Tag' onChange={(e) => setTag(e.target.value)}/><br/>
-          <button onClick={submit}>Submit</button>
+      <Header/>
+      <div className="page"> 
+        <div className='summoner-input'>
+          <h2>Summoner Name: {name}</h2>
+          <div>
+            <input type='text' placeholder='Name' onChange={(e) => setName(e.target.value)}/>
+            <input type='text' placeholder='#Tag' onChange={(e) => setTag(e.target.value)}/>
+            <button onClick={submit}>Submit</button>
+          </div>
         </div>
 
         {showData && championPool &&<ChampionPool champions={championPool}/>}
