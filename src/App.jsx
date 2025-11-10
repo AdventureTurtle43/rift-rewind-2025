@@ -56,7 +56,7 @@ function App() {
 
   async function fetchAiSummary() {
     let prompt = `Please suggest new champions for player.     Player match history:    Player is a ${role} main    `
-
+    console.log(championPool[0].name)
     for(champ of championPool){
       prompt += `On champion ${champ.name}, player has ${champ.games} played with a ${champ.winRate} percent win rate        `
     }
