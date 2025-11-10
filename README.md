@@ -1,16 +1,24 @@
-# React + Vite
+## Inspiration
+In ranked League of Legends, you can’t control your teammates, but you can control your draft. Picking the right champion can make or break a match before it even starts. We built Pool Party to help players make **smarter draft decisions** by understanding their own strengths and weaknesses, giving them the best possible odds before the game even begins.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What it does
+Pool Party is an AI-powered **champion pool analyst**. It pulls your match history directly from the Riot API, analyzes your performance, like your win rates, comfort picks, and tough matchups, and sends that data to an AI agent trained on deep League of Legends draft knowledge.
+The result: **personalized champion suggestions, counterpick insights, and blind pick recommendations** tailored to you. Whether you’re one-tricking a champion or expanding your pool, Pool Party helps you play smarter and climb faster.
 
-Currently, two official plugins are available:
+## How we built it
+Pool Party combines AI reasoning with structured gameplay data with AWS:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Riot API** – Provides match history and player performance data  
+- **AWS Bedrock Knowledge Base** – Supplies contextual game knowledge (champion data, categories, counters, etc.)  
+- 🤖 **Strands Agents** – Multiple AI agents collaborate to analyze data, evaluate patterns, and generate intelligent suggestions  
+-  **AWS Infrastructure** – Amplify, Lambda functions, s3 buckets, and more.
 
-## React Compiler
+## Challenges we ran into
+- Teaching the AI **champion context** — classes, counterpicks, blind pick safety
+- Overcoming **API rate limits** and efficiently normalizing large sets of match data  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What we learned
+We are both brand new to AWS and learned everything from IAM to Knowledge Bases. It was a really fun experience learning everything from scratch and deploying an AI Agent in the end.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## What's next for Pool Party
+Draft analysis for your whole team! 
