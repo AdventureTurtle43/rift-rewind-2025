@@ -20,7 +20,7 @@ function App() {
 
   const [weaknesses, setWeaknesses] = useState([])
 
-  const [blindPick, setBlindPick] = useState()
+  const [blindPick, setBlindPick] = useState(null)
 
   const [suggestions, setSuggestions] = useState([])
 
