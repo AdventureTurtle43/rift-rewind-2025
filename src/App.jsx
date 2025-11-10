@@ -65,19 +65,16 @@ function App() {
       <Header/>
       <div className="page"> 
         <div className='summoner-input'>
-          <h2>Summoner Name: {name}</h2>
+          <h2>Summoner Name: <span className="summoner-name">{name}</span></h2>
           <div>
             <input type='text' placeholder='Name' onChange={(e) => setName(e.target.value)}/>
             <input type='text' placeholder='#Tag' onChange={(e) => setTag(e.target.value)}/>
             <button onClick={submit}>Submit</button>
           </div>
         </div>
-
-        <h2>Champion Pool:</h2>
-        {showData && championPool &&<ChampionPool champions={championPool}/>}
-
         {showData && <MainRole mainrole={"top"}></MainRole>}
 
+        {showData && championPool &&<ChampionPool champions={championPool}/>}
         {showData && weaknesses && <MatchupWeaknesses champions={weaknesses}/>}
 
         {showData && suggestions && <Suggestions suggestions={suggestions}/>}
