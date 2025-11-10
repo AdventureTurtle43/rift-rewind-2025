@@ -45,6 +45,8 @@ function App() {
       `${statsUrl}?gameName=${name}&tagLine=${tag}`
     );
     const data = await res.json();
+    const text = await res.text();
+    console.log("RAW:", text);
 
     setChampionPool(data.championPoolStats);
     setWeaknesses(data.enemyLanerWins);
