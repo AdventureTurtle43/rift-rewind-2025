@@ -11,9 +11,20 @@ body {
     margin: 0px;
     color: var(--text);
     font-family: "Lexend", sans-serif;
+    background-image: url("pool.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+    background-attachment: fixed; 
+    backdrop-filter: blur(1px);
 }
 input, button {
     font-family: "Lexend", sans-serif;
+}
+
+h1 {
+    background-image: linear-gradient(to right, red, blue);
+    background-clip: text;
 }
 
 button {
