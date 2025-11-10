@@ -75,7 +75,7 @@ function App() {
     setIsLoadingSuggestions(false);
     const blindPickObj = JSON.parse(data.blindPick)
     setBlindPick(blindPickObj);
-    console.log(blindPickObjk)
+    console.log(blindPickObj)
     console.log(blindPickObj.name)
   }
 
