@@ -37,7 +37,6 @@ function App() {
       .catch((err) => console.error("Failed to load champions", err));
 
     fetchStats();
-    fetchAiSummary();
   }
 
   async function fetchStats() {
@@ -52,6 +51,7 @@ function App() {
     setRole(data.mainRole);
 
     console.log(data);
+    fetchAiSummary();
   }
 
   async function fetchAiSummary() {
