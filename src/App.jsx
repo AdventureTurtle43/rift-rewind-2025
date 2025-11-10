@@ -31,7 +31,7 @@ function App() {
 
 
   const statsUrl = "https://twqcv7u7x5ljbrzpgovckj4ysi0ntzfz.lambda-url.us-east-2.on.aws/";
-  const aiUrl = "https://xxztde05lc.execute-api.us-east-2.amazonaws.com/default/suggestion-strands-agent";
+  const aiUrl = "https://napmkowzddccf4ftyul72tmzgy0uwhbj.lambda-url.us-east-2.on.aws/";
 
   function submit(){
     updateshowData(true);
