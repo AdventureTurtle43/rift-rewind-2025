@@ -22,6 +22,8 @@ function App() {
 
   const [suggestions, setSuggestions] = useState([])
 
+  const url = "https://b8mj01wn5e.execute-api.us-east-2.amazonaws.com/default/get-lol-match-stats";
+
   function submit(){
     updateshowData(true);
     setDisplayName(name);
@@ -45,6 +47,17 @@ function App() {
       .then((res) => res.json())
       .then((data) => setSuggestions(data))
       .catch((err) => console.error("Failed to load champions", err));
+
+    fetchStats();
+  }
+
+  async function fetchStats() {
+
+    const res = await fetch(
+      `${url}?gameName=${name}&tagLine=${tag}`
+    );
+    const data = await res.json();
+    console.log(data); // championPoolStats JSON
   }
 
   return (
