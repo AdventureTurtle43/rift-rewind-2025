@@ -24,7 +24,8 @@ function App() {
 
   const [role, setRole] = useState()
 
-  const url = "https://b8mj01wn5e.execute-api.us-east-2.amazonaws.com/default/get-lol-match-stats";
+  const statsUrl = "https://b8mj01wn5e.execute-api.us-east-2.amazonaws.com/default/get-lol-match-stats";
+  const aiUrl = "https://xxztde05lc.execute-api.us-east-2.amazonaws.com/default/suggestion-strands-agent";
 
   function submit(){
     updateshowData(true);
@@ -41,12 +42,13 @@ function App() {
       .catch((err) => console.error("Failed to load champions", err));
 
     fetchStats();
+    fetchAiSummary();
   }
 
   async function fetchStats() {
 
     const res = await fetch(
-      `${url}?gameName=${name}&tagLine=${tag}`
+      `${statsUrl}?gameName=${name}&tagLine=${tag}`
     );
     const data = await res.json();
 
@@ -55,6 +57,24 @@ function App() {
     setRole(data.mainRole);
 
     console.log(data);
+  }
+
+  async function fetchAiSummary() {
+    const prompt = `Please suggest new champions for player.     Player match history:    Player is a ${role} main    `
+
+    for(champ in championPool){
+      prompt += `On champion ${champ.name}, player has ${champ.games} played with a ${champ.winRate} percent win rate        `
+    }
+
+    for(champ in weaknesses){
+      prompt += `Against champion ${champ.name}, player has ${champ.games} played against them with a ${champ.winRate} percent win rate against them        `
+    }
+    const res = await fetch(
+      `${aiUrl}?prompt=${prompt}`
+    );
+    const data = await res.json();
+
+    setSuggestions(data.suggestions);
   }
 
   return (
