@@ -36,11 +36,6 @@ function App() {
       .then((data) => setBlindPick(data))
       .catch((err) => console.error("Failed to load champions", err));
 
-    fetch("/suggestions.json")
-      .then((res) => res.json())
-      .then((data) => setSuggestions(data))
-      .catch((err) => console.error("Failed to load champions", err));
-
     fetchStats();
     fetchAiSummary();
   }
