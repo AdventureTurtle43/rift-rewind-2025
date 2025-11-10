@@ -5,7 +5,6 @@ const ChampionPool = ({ champions }) => {
 
   return (
     <div className="champion-row">
-        <p>Champion Pool</p>
         {champions.map((champ, index) => (
             <ChampionDisplay
             key={index}

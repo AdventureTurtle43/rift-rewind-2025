@@ -73,6 +73,7 @@ function App() {
           </div>
         </div>
 
+        <h2>Champion Pool:</h2>
         {showData && championPool &&<ChampionPool champions={championPool}/>}
 
         {showData && <MainRole mainrole={"top"}></MainRole>}
