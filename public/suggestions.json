@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Syndra",
+    "reason": "Syndra is a strong mage with high damage output and zone control. She can be effective against mobile mid lane champions like Ahri and Ekko."
+  },
+  {
+    "name": "Orianna", 
+    "reason": "Orianna is a versatile mid lane control mage who can excel in both solo and supportive roles. She has good waveclear and teamfight utility."
+  },
+  {
+    "name": "Lulu",
+    "reason": "As a support, Lulu can provide strong disengage and peel for the team. She works well with a carry-focused mid laner like Ahri."
+  },
+  {
+    "name": "Morgana",
+    "reason": "Morgana is a versatile support who can provide good shielding and utility against high crowd control teams. She has a strong bind/snare ability to lock down opponents."
+  },
+  {
+    "name": "Karma",
+    "reason": "Karma is a flexible support who can transition into a secondary mage. Her mantra abilities give her good utility and damage output."
+  }
+]
