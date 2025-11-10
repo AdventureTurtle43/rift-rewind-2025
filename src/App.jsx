@@ -56,11 +56,11 @@ function App() {
 
   async function fetchAiSummary(responseChampionPool, responseWeaknesses, responseRole) {
     let prompt = `Please suggest new champions for player.     Player match history:    Player is a ${responseRole} main    `
-    for(champ of responseChampionPool){
+    for(const champ of responseChampionPool){
       prompt += `On champion ${champ.name}, player has ${champ.games} played with a ${champ.winRate} percent win rate        `
     }
 
-    for(champ of responseWeaknesses){
+    for(const champ of responseWeaknesses){
       prompt += `Against champion ${champ.name}, player has ${champ.games} played against them with a ${champ.winRate} percent win rate against them        `
     }
 
