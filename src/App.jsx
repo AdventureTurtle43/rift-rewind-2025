@@ -75,6 +75,7 @@ function App() {
     setIsLoadingSuggestions(false);
     setBlindPick(data.blindPick.name);
     console.log(data.blindPick)
+    console.log(data.blindPick.name)
   }
 
   return (
