@@ -20,7 +20,7 @@ function App() {
 
   const [weaknesses, setWeaknesses] = useState([])
 
-  const [blindPick, setBlindPick] = useState(null)
+  const [blindPick, setBlindPick] = useState("")
 
   const [suggestions, setSuggestions] = useState([])
 
@@ -73,7 +73,7 @@ function App() {
 
     setSuggestions(data.suggestions.suggestions);
     setIsLoadingSuggestions(false);
-    setBlindPick(data.blindPick);
+    setBlindPick(data.blindPick.name);
   }
 
   return (
