@@ -11,26 +11,21 @@ body {
     margin: 0px;
     color: var(--text);
     font-family: "Lexend", sans-serif;
-    background-image: url("pool.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center; 
-    background-attachment: fixed; 
-    backdrop-filter: blur(1px);
 }
 input, button {
     font-family: "Lexend", sans-serif;
 }
 
 h1 {
-    background-image: linear-gradient(to right, red, blue);
-    background-clip: text;
+  background: -webkit-linear-gradient(var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 button {
     background-color: var(--accent);
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
 }
 button:hover{
@@ -40,29 +35,49 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem;
 }
 .summoner-input {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 20px;
 }
-.summoner-input input {
-    height: 20px;
+.summoner-name {
+    background: -webkit-linear-gradient(var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.summoner-input input, button{
+    height: 30px;
+    margin: 2px;
 }
 .header {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: var(--primary);
+    height: 200px;
+}
+.header p {
+    font-size: small;
+    margin-left: 20px;
+    margin-top: 0px;
+    color: var(white)
+}
+.header-banner {
+    display: flex;
     align-items: center;
     gap: 10px;
-    background-color: var(--primary);
+    font-size: 30px;
 }
 .header-icon {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     margin-left: 1rem;
     border-radius: 50%;
 }
+
 .champion-row {
   display: flex;
   flex-direction: row;
@@ -70,6 +85,14 @@ button:hover{
   gap: 1.5rem;
   justify-content: flex-start;
   align-items: center;  
+}
+.champion-icon:hover{
+    transform: scale(1.2);
+}
+.champion-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .main-role {
     display: flex;
@@ -86,9 +109,14 @@ button:hover{
     padding: 2rem;
 }
 .suggestion {
-    display: flex;
-    flex-direction: row;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem;
+}
+.red-text{
+    color:rgb(183, 7, 7)
+}
+.green-text{
+    color:green
 }

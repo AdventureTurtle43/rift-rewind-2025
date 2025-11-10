@@ -4,8 +4,9 @@ import ChampionDisplay from './ChampionDisplay'
 const MatchupWeaknesses = ({ champions }) => {
 
   return (
+    <div>
+      <h2>Matchup Weaknesses:</h2>
     <div className="champion-row">
-        <p>Matchup Weaknesses</p>
         {champions.map((champ, index) => (
             <ChampionDisplay
             key={index}
@@ -13,6 +14,7 @@ const MatchupWeaknesses = ({ champions }) => {
             winRate={champ.winRate}
             />
         ))}
+    </div>
     </div>
   );
 };
