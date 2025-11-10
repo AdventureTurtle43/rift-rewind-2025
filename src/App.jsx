@@ -22,6 +22,8 @@ function App() {
 
   const [suggestions, setSuggestions] = useState([])
 
+  const [role, setRole] = useState()
+
   const url = "https://b8mj01wn5e.execute-api.us-east-2.amazonaws.com/default/get-lol-match-stats";
 
   function submit(){
@@ -57,7 +59,12 @@ function App() {
       `${url}?gameName=${name}&tagLine=${tag}`
     );
     const data = await res.json();
-    console.log(data); // championPoolStats JSON
+
+    setChampionPool(data.championPoolStats);
+    setWeaknesses(data.enemyLanerWins);
+    setRole(data.mainRole);
+
+    console.log(data);
   }
 
   return (
@@ -75,7 +82,7 @@ function App() {
 
         {showData && championPool &&<ChampionPool champions={championPool}/>}
 
-        {showData && <MainRole mainrole={"top"}></MainRole>}
+        {showData && <MainRole mainrole={role}></MainRole>}
 
         {showData && weaknesses && <MatchupWeaknesses champions={weaknesses}/>}
 
