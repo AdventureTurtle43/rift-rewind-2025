@@ -1,0 +1,96 @@
+/* css/PoolPartyLoading.css */
+
+.pool-party-loading {
+  position: relative;
+  height: 250px;
+  background: linear-gradient(to bottom, #87cefa, #00bfff);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+}
+
+.sun {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at center, #ffed85, #f9c90c);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 30px rgba(255, 233, 100, 0.6);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  animation: waveMove 6s linear infinite;
+}
+
+.wave1 { animation-duration: 7s; opacity: 0.5; }
+.wave2 { animation-duration: 9s; opacity: 0.4; }
+.wave3 { animation-duration: 11s; opacity: 0.3; }
+
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.floatie {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 30% 30%, #ff6f61, #e03e36);
+  border-radius: 50%;
+  animation: float 3s ease-in-out infinite;
+  border: 5px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.floatie .inner {
+  width: 20px;
+  height: 20px;
+  background: #87cefa;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.loading-text {
+  font-size: 20px;
+  margin-top: 10px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.tagline {
+  font-size: 14px;
+  opacity: 0.8;
+}

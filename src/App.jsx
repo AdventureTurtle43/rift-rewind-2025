@@ -6,6 +6,8 @@ import Suggestions from './Suggestions'
 import BlindPick from './BlindPick'
 import "./css/App.css"
 import Header from './Header'
+import Loading from './Loading'
+import PoolPartyLoading from './PoolPartyLoading.jsx'
 
 
 function App() {
@@ -22,7 +24,11 @@ function App() {
 
   const [suggestions, setSuggestions] = useState([])
 
-  const [role, setRole] = useState()
+  const [role, setRole] = useState("")
+
+  const [isLoadingPool, setIsLoadingPool] = useState(true);
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(true);
+
 
   const statsUrl = "https://b8mj01wn5e.execute-api.us-east-2.amazonaws.com/default/get-lol-match-stats";
   const aiUrl = "https://xxztde05lc.execute-api.us-east-2.amazonaws.com/default/suggestion-strands-agent";
@@ -40,7 +46,7 @@ function App() {
   }
 
   async function fetchStats() {
-
+    setIsLoadingPool(true);
     const res = await fetch(
       `${statsUrl}?gameName=${name}&tagLine=${tag}`
     );
@@ -49,8 +55,8 @@ function App() {
     setChampionPool(data.championPoolStats);
     setWeaknesses(data.enemyLanerWins);
     setRole(data.mainRole);
-
-    console.log(data);
+    setIsLoadingPool(false);
+    setIsLoadingSuggestions(true);
     fetchAiSummary(data.championPoolStats, data.enemyLanerWins, data.mainRole);
   }
 
@@ -71,6 +77,7 @@ function App() {
     const data = await res.json();
 
     setSuggestions(data.suggestions);
+    setIsLoadingSuggestions(false);
   }
 
   return (
@@ -85,14 +92,14 @@ function App() {
             <button onClick={submit}>Submit</button>
           </div>
         </div>
-        {showData && <MainRole mainrole={"top"}></MainRole>}
+        {showData && !isLoadingPool && mainrole && <MainRole mainrole={mainRole}></MainRole>}
+        {showData && !isLoadingPool && championPool &&<ChampionPool champions={championPool}/>}
+        {showData && !isLoadingPool && weaknesses && <MatchupWeaknesses champions={weaknesses}/>}
+        {showData && isLoadingPool && <Loading type="Champion Pool"></Loading>}
 
-        {showData && championPool &&<ChampionPool champions={championPool}/>}
-        {showData && weaknesses && <MatchupWeaknesses champions={weaknesses}/>}
-
-        {showData && suggestions && <Suggestions suggestions={suggestions}/>}
-
-        {showData && blindPick && <BlindPick blind={blindPick}/>}
+        {showData && !isLoadingSuggestions && suggestions && <Suggestions suggestions={suggestions}/>}
+        {showData && !isLoadingSuggestions && blindPick && <BlindPick blind={blindPick}/>}
+        {showData && isLoadingSuggestions && <Loading type='Suggestions'></Loading>}
         
       </div>
     </>
