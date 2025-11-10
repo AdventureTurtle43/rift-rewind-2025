@@ -20,10 +20,10 @@ button {
     background-color: var(--accent);
     border: none;
     border-radius: 10px;
-    height: 30px;
+    padding: 5px;
 }
 button:hover{
-    background-color: #e6952a;
+    background-color: #dd8a1e;
 }
 .page {
     display: flex;
