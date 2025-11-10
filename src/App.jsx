@@ -30,16 +30,6 @@ function App() {
     updateshowData(true);
     setDisplayName(name);
 
-    fetch("/championpool.json")
-      .then((res) => res.json())
-      .then((data) => setChampionPool(data))
-      .catch((err) => console.error("Failed to load champions", err));
-
-    fetch("/weaknesses.json")
-      .then((res) => res.json())
-      .then((data) => setWeaknesses(data))
-      .catch((err) => console.error("Failed to load champions", err));
-
     fetch("/blindpick.json")
       .then((res) => res.json())
       .then((data) => setBlindPick(data))
