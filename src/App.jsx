@@ -64,6 +64,8 @@ function App() {
     for(champ in weaknesses){
       prompt += `Against champion ${champ.name}, player has ${champ.games} played against them with a ${champ.winRate} percent win rate against them        `
     }
+
+    console.log(prompt)
     const res = await fetch(
       `${aiUrl}?prompt=${prompt}`
     );
