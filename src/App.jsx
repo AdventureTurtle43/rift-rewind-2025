@@ -52,7 +52,7 @@ function App() {
   async function fetchStats() {
 
     const res = await fetch(
-      `https://xyz123.execute-api.us-west-2.amazonaws.com/default/get-lol-match-stats?gameName=${displayName}&tagLine=${tag}`
+      `${url}?gameName=${displayName}&tagLine=${tag}`
     );
     const data = await res.json();
     console.log(data); // championPoolStats JSON
