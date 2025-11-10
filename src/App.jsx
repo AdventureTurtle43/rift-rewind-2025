@@ -22,30 +22,18 @@ function App() {
 
   const [suggestions, setSuggestions] = useState([])
 
-  const url = "https://b8mj01wn5e.execute-api.us-east-2.amazonaws.com/default/get-lol-match-stats";
+  const [role, setRole] = useState()
+
+  const statsUrl = "https://b8mj01wn5e.execute-api.us-east-2.amazonaws.com/default/get-lol-match-stats";
+  const aiUrl = "https://xxztde05lc.execute-api.us-east-2.amazonaws.com/default/suggestion-strands-agent";
 
   function submit(){
     updateshowData(true);
     setDisplayName(name);
 
-    fetch("/championpool.json")
-      .then((res) => res.json())
-      .then((data) => setChampionPool(data))
-      .catch((err) => console.error("Failed to load champions", err));
-
-    fetch("/weaknesses.json")
-      .then((res) => res.json())
-      .then((data) => setWeaknesses(data))
-      .catch((err) => console.error("Failed to load champions", err));
-
     fetch("/blindpick.json")
       .then((res) => res.json())
       .then((data) => setBlindPick(data))
-      .catch((err) => console.error("Failed to load champions", err));
-
-    fetch("/suggestions.json")
-      .then((res) => res.json())
-      .then((data) => setSuggestions(data))
       .catch((err) => console.error("Failed to load champions", err));
 
     fetchStats();
@@ -54,10 +42,35 @@ function App() {
   async function fetchStats() {
 
     const res = await fetch(
-      `${url}?gameName=${name}&tagLine=${tag}`
+      `${statsUrl}?gameName=${name}&tagLine=${tag}`
     );
     const data = await res.json();
-    console.log(data); // championPoolStats JSON
+
+    setChampionPool(data.championPoolStats);
+    setWeaknesses(data.enemyLanerWins);
+    setRole(data.mainRole);
+
+    console.log(data);
+    fetchAiSummary(data.championPoolStats, data.enemyLanerWins, data.mainRole);
+  }
+
+  async function fetchAiSummary(responseChampionPool, responseWeaknesses, responseRole) {
+    let prompt = `Please suggest new champions for player.     Player match history:    Player is a ${responseRole} main    `
+    for(const champ of responseChampionPool){
+      prompt += `On champion ${champ.name}, player has ${champ.games} played with a ${champ.winRate} percent win rate        `
+    }
+
+    for(const champ of responseWeaknesses){
+      prompt += `Against champion ${champ.name}, player has ${champ.games} played against them with a ${champ.winRate} percent win rate against them        `
+    }
+
+    console.log(prompt)
+    const res = await fetch(
+      `${aiUrl}?prompt=${prompt}`
+    );
+    const data = await res.json();
+
+    setSuggestions(data.suggestions);
   }
 
   return (
