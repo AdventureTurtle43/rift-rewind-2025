@@ -71,10 +71,12 @@ function App() {
     );
     const data = await res.json();
 
-    setSuggestions(data.suggestions.suggestions);
-    setIsLoadingSuggestions(false);
+    
+    const suggestionsObj = JSON.parse(data.suggestions.suggestions)
+    setSuggestions(suggestionsObj);
     const blindPickObj = JSON.parse(data.blindPick)
     setBlindPick(blindPickObj);
+    setIsLoadingSuggestions(false);
     console.log(blindPickObj)
     console.log(blindPickObj.name)
   }
