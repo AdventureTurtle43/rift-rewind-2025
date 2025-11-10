@@ -37,11 +37,6 @@ function App() {
     updateshowData(true);
     setDisplayName(name);
 
-    fetch("/blindpick.json")
-      .then((res) => res.json())
-      .then((data) => setBlindPick(data))
-      .catch((err) => console.error("Failed to load champions", err));
-
     fetchStats();
   }
 
@@ -76,8 +71,9 @@ function App() {
     );
     const data = await res.json();
 
-    setSuggestions(data.suggestions);
+    setSuggestions(data.suggestions.suggestions);
     setIsLoadingSuggestions(false);
+    setBlindPick(data.blindPick);
   }
 
   return (
@@ -92,7 +88,7 @@ function App() {
             <button onClick={submit}>Submit</button>
           </div>
         </div>
-        {showData && !isLoadingPool && mainrole && <MainRole mainrole={mainRole}></MainRole>}
+        {showData && !isLoadingPool && role && <MainRole mainrole={role}></MainRole>}
         {showData && !isLoadingPool && championPool &&<ChampionPool champions={championPool}/>}
         {showData && !isLoadingPool && weaknesses && <MatchupWeaknesses champions={weaknesses}/>}
         {showData && isLoadingPool && <Loading type="Champion Pool"></Loading>}
