@@ -52,7 +52,7 @@ function App() {
   async function fetchStats() {
 
     const res = await fetch(
-      `${url}?gameName=${displayName}&tagLine=${tag}`
+      `${url}?gameName=${name}&tagLine=${tag}`
     );
     const data = await res.json();
     console.log(data); // championPoolStats JSON
