@@ -42,6 +42,7 @@ function App() {
 
   async function fetchStats() {
     setIsLoadingPool(true);
+    setIsLoadingSuggestions(true);
     const res = await fetch(
       `${statsUrl}?gameName=${name}&tagLine=${tag}`
     );
@@ -73,10 +74,11 @@ function App() {
 
     console.log(data)
     const suggestionsObj = JSON.parse(data.suggestions)
-    setSuggestions(suggestionsObj);
+    setSuggestions(suggestionsObj.suggestions);
     const blindPickObj = JSON.parse(data.blindPick)
     setBlindPick(blindPickObj);
     setIsLoadingSuggestions(false);
+    console.log(suggestionsObj.suggestions)
     console.log(blindPickObj)
     console.log(blindPickObj.name)
   }
